@@ -4,13 +4,13 @@ import Link from "../link";
 
 const Header = (props) => {
     return (
-        <header className={styles.navigation}>
-            <ul>
-                <Link href="main.js" title="Logo"/>
-                <li className={styles.listItems}>Routes</li>
-                <li className={styles.listItems}>Sign in</li>
-                <li className={styles.listItems}>Sign up</li>
-            </ul>
+        <header>
+            <div className={styles.navigation}>
+                <Link href="/" title="Logo" type="header"/>
+                <Link href="/ecoroutes" title="Routes" type="header"/>
+                <Link href="/signin" title="Sign in" type="header"/>
+                <Link href="/signup" title="Sign up" type="header"/>
+            </div>
         </header>
     )
 }
