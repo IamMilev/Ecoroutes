@@ -6,7 +6,7 @@ const Header = (props) => {
     return (
         <header>
             <div className={styles.navigation}>
-                <Link href="/" title="Logo" type="header"/>
+                <Link href="/" title="Razhodi.se" type="header"/>
                 <Link href="/ecoroutes" title="Routes" type="header"/>
                 <Link href="/signin" title="Sign in" type="header"/>
                 <Link href="/signup" title="Sign up" type="header"/>

@@ -1,10 +1,13 @@
 import React from "react"
-// import styles from './index.module.css'
+import styles from './index.module.css'
 
-const Ecoroute = ({ title }) => {
+const Ecoroute = ({ image, title, description, username }) => {
     return (
-        <div>
-            {title}
+        <div className={styles.container}>
+            <img src={image} alt={description} className={styles.image}/> <br/>
+            {title} <br/>
+            {description} <br/>
+            {username}
         </div>
     )
 }
