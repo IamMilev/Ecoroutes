@@ -1,0 +1,16 @@
+.footer {
+    background-color: black;
+    padding: 40px 20px;
+}
+
+.footer-wrapper {
+    display: flex;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #c7c7c7;
+}
