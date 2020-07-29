@@ -23,9 +23,9 @@ class Ecoroutes extends Component {
     renderEcoroutes() {
         const { ecoroutes } = this.state
 
-        return ecoroutes.map(ecoroute => {
+        return ecoroutes.map((ecoroute, index) => {
             return(
-                <Ecoroute key={ecoroute._id} {...ecoroute} />
+                <Ecoroute key={ecoroute._id} index={index+1} {...ecoroute} />
             )
         });
     }

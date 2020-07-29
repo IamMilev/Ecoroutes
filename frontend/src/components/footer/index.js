@@ -1,15 +1,23 @@
 import React from "react"
 import Link from "../link"
 import styles from './index.module.css'
+import logo from "../../images/Razhodi.se.svg"
+import getNavigation  from "../../utils/navigation"
 
 const Footer = () => {
+    const links = getNavigation()
+
     return (
         <footer className={styles.footer}>
             <div className={styles['footer-wrapper']}>
-                <Link href="/" title="Razhodi.se" type="footer"/>
-                <Link href="/ecoroutes" title="Routes" type="footer"/>
-                <Link href="/signin" title="Sign in" type="footer"/>
-                <Link href="/signup" title="Sign up" type="footer"/>
+                <img src={logo} alt="Logo" className={styles.logo}/>
+                {
+                    links.map(nav => {
+                        return (
+                            <Link href={nav.link} title={nav.title} type="footer"/>
+                        )
+                    })
+                }
             </div>
         </footer>
     )
