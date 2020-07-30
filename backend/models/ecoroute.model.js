@@ -13,6 +13,6 @@ const ecorouteSchema = new Schema({
     timestamps: true,
 });
 
-const Ecoroute = mongoose.model('Ecoroute', ecorouteSchema);
+const ecoroute = mongoose.model('ecoroute', ecorouteSchema);
 
-module.exports = Ecoroute;
+module.exports = ecoroute;
