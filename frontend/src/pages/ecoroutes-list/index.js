@@ -1,9 +1,10 @@
-import React, {Component} from "react"
+import React, {Component} from 'react'
 import styles from './index.module.css'
-import Ecoroute from "../ecoroute";
+import PageLayout from "../../components/page-layout";
+import Ecoroute from "../../components/ecoroute";
+import Title from "../../components/title";
 
-class Ecoroutes extends Component {
-
+class EcoroutesListPage extends Component {
     constructor(props) {
         super(props)
 
@@ -36,14 +37,16 @@ class Ecoroutes extends Component {
 
     render() {
         return (
-            <div className={styles.container}>
-                <h1>Ecoroutes</h1>
-                <div>
-                    {this.renderEcoroutes()}
+            <PageLayout>
+                <div className={styles.container}>
+                    <Title title="Ecoroutes" />
+                    <div className={styles['ecoroutes-wrapper']}>
+                        {this.renderEcoroutes()}
+                    </div>
                 </div>
-            </div>
+            </PageLayout>
         )
     }
 }
 
-export default Ecoroutes
+export default EcoroutesListPage;
