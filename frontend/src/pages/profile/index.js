@@ -3,6 +3,7 @@ import PageLayout from "../../components/page-layout";
 
 class ProfilePage extends Component {
     componentDidMount() {
+
     }
 
     render() {

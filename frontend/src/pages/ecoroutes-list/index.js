@@ -1,39 +1,39 @@
 import React, {Component} from 'react'
 import styles from './index.module.css'
 import PageLayout from "../../components/page-layout";
-import Ecoroute from "../../components/ecoroute";
+// import Ecoroute from "../../components/ecoroute";
 import Title from "../../components/title";
 
 class EcoroutesListPage extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            ecoroutes : []
-        }
-    }
-
-    getEcoroutes = async () => {
-        const promise = await fetch('http://localhost:5500/ecoroutes/')
-        const ecoroutes = await promise.json()
-        this.setState({
-            ecoroutes
-        })
-    }
-
-    renderEcoroutes() {
-        const { ecoroutes } = this.state
-
-        return ecoroutes.map((ecoroute, index) => {
-            return(
-                <Ecoroute key={ecoroute._id} index={index+1} {...ecoroute} />
-            )
-        });
-    }
-
-    componentDidMount() {
-        this.getEcoroutes()
-    }
+    // constructor(props) {
+    //     super(props)
+    //
+    //     this.state = {
+    //         ecoroutes : []
+    //     }
+    // }
+    //
+    // getEcoroutes = async () => {
+    //     const promise = await fetch('http://localhost:5500/ecoroutes/')
+    //     const ecoroutes = await promise.json()
+    //     this.setState({
+    //         ecoroutes
+    //     })
+    // }
+    //
+    // renderEcoroutes() {
+    //     const { ecoroutes } = this.state
+    //
+    //     return ecoroutes.map((ecoroute, index) => {
+    //         return(
+    //             <Ecoroute key={ecoroute._id} index={index+1} {...ecoroute} />
+    //         )
+    //     });
+    // }
+    //
+    // componentDidMount() {
+    //     this.getEcoroutes()
+    // }
 
     render() {
         return (
@@ -41,7 +41,7 @@ class EcoroutesListPage extends Component {
                 <div className={styles.container}>
                     <Title title="Ecoroutes" />
                     <div className={styles['ecoroutes-wrapper']}>
-                        {this.renderEcoroutes()}
+                        {/*{this.renderEcoroutes()}*/}
                     </div>
                 </div>
             </PageLayout>
