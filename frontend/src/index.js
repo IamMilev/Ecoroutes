@@ -1,5 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import Navigation from "./navigation";
 
-ReactDOM.render(<App />, document.querySelector("#root"));
+ReactDOM.render(
+    <React.StrictMode>
+        <App>
+            <Navigation />
+        </App>
+    </React.StrictMode>,
+    document.querySelector("#root"));
