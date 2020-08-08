@@ -4,6 +4,10 @@ import UserContext from "../../context/userContext";
 import Axios from "axios";
 import ErrorNotice from "../../components/misc/ErrorNotice";
 import PageLayout from "../../components/page-layout";
+import Title from "../../components/title"
+import Input from "../../components/input";
+import SubmitButton from "../../components/button/submit-button";
+import Form from "../../components/form";
 
 const Login = () => {
     const [email, setEmail] = useState();
@@ -14,7 +18,7 @@ const Login = () => {
     const history = useHistory();
 
 
-        const submit = async (e) => {
+    const submit = async (e) => {
         e.preventDefault();
         try {
             const loginUser = { email, password };
@@ -28,34 +32,34 @@ const Login = () => {
                 loggedIn: true
             });
             localStorage.setItem("auth-token", loginRes.data.token);
-            history.push("/ecotrail");
+            history.push("/");
         } catch (err) {
             err.response.data.msg && setError(err.response.data.msg);
         }
     };
+
     return (
         <PageLayout>
-            <h2>Log in</h2>
+            <Title title="Sign In" />
             {error && (
                 <ErrorNotice message={error} clearError={() => setError(undefined)} />
             )}
-            <form className="form" onSubmit={submit}>
-                <label htmlFor="login-email">Email</label>
-                <input
+            <Form onSubmit={submit} >
+                <Input
+                    label="Email"
                     id="login-email"
                     type="email"
-                    onChange={(e) => setEmail(e.target.value)}
-                />
+                    onChange={(e) => setEmail(e.target.value)} />
 
-                <label htmlFor="login-password">Password</label>
-                <input
+                <Input
                     id="login-password"
                     type="password"
+                    label="Password"
                     onChange={(e) => setPassword(e.target.value)}
-                />
+                    />
 
-                <input type="submit" value="Log in" />
-            </form>
+                <SubmitButton type="submit" title="Sign In" />
+            </Form>
             <div>Don't have an account? <button onClick={() => {history.push('/signup')}}>Sign up now!</button></div>
         </PageLayout>
     );

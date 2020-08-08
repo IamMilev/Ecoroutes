@@ -4,6 +4,9 @@ import UserContext from "../../context/userContext";
 import Axios from "axios";
 import ErrorNotice from "../../components/misc/ErrorNotice";
 import PageLayout from "../../components/page-layout";
+import SubmitButton from "../../components/button/submit-button";
+import Input from "../../components/input";
+import Form from '../../components/form'
 
 export default function Register() {
     const [email, setEmail] = useState();
@@ -43,35 +46,29 @@ export default function Register() {
             {error && (
                 <ErrorNotice message={error} clearError={() => setError(undefined)} />
             )}
-            <form className="form" onSubmit={submit}>
-                <label htmlFor="register-email">Email</label>
-                <input
-                    id="register-email"
-                    type="email"
-                    onChange={(e) => setEmail(e.target.value)}
-                />
+            <Form onSubmit={submit}>
+                <Input type="email"
+                       label="Email"
+                       id="register-email"
+                       onChange={(e) => setEmail(e.target.value)} />
 
-                <label htmlFor="register-password">Password</label>
-                <input
-                    id="register-password"
-                    type="password"
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <input
-                    type="password"
-                    placeholder="Verify password"
-                    onChange={(e) => setPasswordCheck(e.target.value)}
-                />
+                <Input type="password"
+                       label="Password"
+                       id="register-password"
+                       onChange={(e) => setPassword(e.target.value)} />
 
-                <label htmlFor="register-display-name">Display name</label>
-                <input
-                    id="register-display-name"
-                    type="text"
-                    onChange={(e) => setDisplayName(e.target.value)}
-                />
+                <Input type="password"
+                       label="Verify Password"
+                       id="register-repassword"
+                       onChange={(e) => setPasswordCheck(e.target.value)} />
 
-                <input type="submit" value="Register" />
-            </form>
+                <Input type="text"
+                       label="Display Name"
+                       id="register-display-name"
+                       onChange={(e) => setDisplayName(e.target.value)} />
+
+                <SubmitButton type="submit" title="Register"/>
+            </Form>
             <div>Already have an account? <button onClick={() => {history.push('/signin')}}>Sign in now!</button></div>
         </PageLayout>
     );

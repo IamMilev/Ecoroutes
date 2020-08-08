@@ -18,7 +18,7 @@ const ProfilePage = () => {
             loggedIn: false
         });
         localStorage.setItem("auth-token", "");
-        history.push("/ecotrail")
+        history.push("/signin")
     };
 
 
