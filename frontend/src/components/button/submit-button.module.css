@@ -1,5 +1,6 @@
 
 .submit {
+    display: block;
     font-size: 1rem;
     font-weight: 600;
     padding: 10px 15px;
@@ -8,6 +9,7 @@
     max-width: 160px;
     border: none;
     border-radius: 8px;
+    margin-top: 40px;
 }
 
 .submit:hover {

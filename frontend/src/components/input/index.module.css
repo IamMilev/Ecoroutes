@@ -6,7 +6,7 @@
 
 .input {
     font-size:18px;
-    padding:10px 10px 10px 5px;
+    padding:10px 10px 10px 0;
     display:block;
     width: 280px;
     border:none;
@@ -19,7 +19,6 @@
     font-weight:normal;
     position:absolute;
     pointer-events:none;
-    left:5px;
     top:-20px;
     transition:0.2s ease all;
     -moz-transition:0.2s ease all;
@@ -27,7 +26,7 @@
 }
 
 .input:focus ~ .input-label {
-    color:#5264AE;
+    color:#048ecf;
 }
 
 .border-bottom {
@@ -42,7 +41,7 @@
     width: 0;
     bottom: 0;
     position:absolute;
-    background:#5264AE;
+    background:#048ecf;
     transition:0.2s ease all;
     -moz-transition:0.2s ease all;
     -webkit-transition:0.2s ease all;
