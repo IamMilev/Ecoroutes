@@ -2,11 +2,12 @@ import React, { useContext} from 'react'
 import PageLayout from "../../components/page-layout";
 import UserContext from "../../context/userContext";
 import { useHistory } from "react-router-dom";
+import Button from "../../components/button/standard-button";
 
 
 const ProfilePage = () => {
     const { setUserData } = useContext(UserContext);
-    const { loggedIn, user } = useContext(UserContext).userData
+    const { user } = useContext(UserContext).userData
 
 
     const history = useHistory();
@@ -24,8 +25,8 @@ const ProfilePage = () => {
 
     return(
             <PageLayout>
-                <h1>Welcome, <span>{ loggedIn ? user.displayName : 'Guest' }</span></h1>
-                <button onClick={logout}>Log out</button>
+                <h1>Welcome, {user.displayName} </h1>
+                <Button onClick={logout} title="Log Out" />
             </PageLayout>
         )
 }
