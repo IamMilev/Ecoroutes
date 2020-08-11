@@ -1,0 +1,12 @@
+.container {
+    padding: 60px 20px;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.main {
+    font-family: "Roboto", sans-serif;
+}

@@ -1,0 +1,28 @@
+.date-picker {
+    font-size:18px !important;
+    padding:10px 10px 10px 0;
+    display:block;
+    width: 280px;
+    border:none;
+    border-bottom:1px solid #757575;
+}
+
+.date-picker:focus {
+    outline: none;
+}
+
+.date-picker-wrapper {
+    display: block;
+    position:relative;
+    margin-bottom:45px;
+}
+
+.date-picker-label {
+    color:#999;
+    font-size:14px;
+    position:absolute;
+    top:-20px;
+    transition:0.2s ease all;
+    -moz-transition:0.2s ease all;
+    -webkit-transition:0.2s ease all;
+}

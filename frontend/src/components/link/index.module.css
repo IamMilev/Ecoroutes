@@ -1,3 +1,4 @@
+
 .header-list-link {
     color: black;
     text-decoration: none;
@@ -12,7 +13,6 @@
     margin-left: 20px;
 }
 
-.header-list-item:first-child {
-    margin-left: 0;
-    margin-right: auto;
+.footer-list-item {
+    margin-left: 10px;
 }
