@@ -1,51 +1,68 @@
-import React, {Component} from 'react'
-import Title from "../../components/title";
-import SubmitButton from "../../components/button/submit-button";
+import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
+import UserContext from "../../context/userContext";
+import Axios from "axios";
+import ErrorNotice from "../../components/misc/ErrorNotice";
 import PageLayout from "../../components/page-layout";
+import Title from "../../components/title"
 import Input from "../../components/input";
+import SubmitButton from "../../components/button/submit-button";
+import Form from "../../components/form";
 
-class SignInPage extends Component {
-    constructor(props) {
-        super(props)
+const Login = () => {
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+    const [error, setError] = useState();
 
-        this.state = {
-            email: "",
-            password: ""
+    const { setUserData } = useContext(UserContext);
+    const history = useHistory();
+
+
+    const submit = async (e) => {
+        e.preventDefault();
+        try {
+            const loginUser = { email, password };
+            const loginRes = await Axios.post(
+                "http://localhost:5000/users/login",
+                loginUser
+            );
+            setUserData({
+                token: loginRes.data.token,
+                user: loginRes.data.user,
+                loggedIn: true
+            });
+            localStorage.setItem("auth-token", loginRes.data.token);
+            history.push("/");
+        } catch (err) {
+            err.response.data.msg && setError(err.response.data.msg);
         }
-    }
+    };
 
-    onChange = (event, type) => {
-        const newState = {}
-        newState[type] = event.target.value
-
-        this.setState(newState)
-    }
-
-    render() {
-        const {
-            email,
-            password
-        } = this.state
-
-        return (
-            <PageLayout>
-                <Title title="Sign In"/>
+    return (
+        <PageLayout>
+            <Title title="Sign In" />
+            {error && (
+                <ErrorNotice message={error} clearError={() => setError(undefined)} />
+            )}
+            <Form onSubmit={submit} >
                 <Input
-                    value={email}
-                    onChange={(e) =>  this.onChange(e, 'email')}
                     label="Email"
-                    id="email"
-                />
+                    id="login-email"
+                    type="email"
+                    onChange={(e) => setEmail(e.target.value)} />
+
                 <Input
-                    value={password}
-                    onChange={(e) =>  this.onChange(e, 'password')}
+                    id="login-password"
+                    type="password"
                     label="Password"
-                    id="password"
-                />
-                <SubmitButton title="Sign In"/>
-            </PageLayout>
-        )
-    }
+                    onChange={(e) => setPassword(e.target.value)}
+                    />
+
+                <SubmitButton type="submit" title="Sign In" />
+            </Form>
+            <div>Don't have an account? <button onClick={() => {history.push('/signup')}}>Sign up now!</button></div>
+        </PageLayout>
+    );
 }
 
-export default SignInPage
+export default Login

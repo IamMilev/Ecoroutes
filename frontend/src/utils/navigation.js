@@ -1,28 +1,44 @@
-const getNavigation = (_id) => {
-    const links = [
+const getNavigation = (userData) => {
+
+    const authLinks = [
         {
-            title: 'Ecoroute',
-            link: '/ecoroutes'
+            title: "Homepage",
+            link: "/"
         },
         {
-            title: 'Add Ecoroute',
-            link: '/addecoroute'
+            title: "Ecotrails",
+            link: "/ecotrail"
         },
         {
-            title: 'Profile',
-            link: `/profile/${_id}`
+            title: "Add Ecotrail",
+            link: "/addecotrail"
         },
         {
-            title: 'Sign In',
-            link: '/signin'
-        },
-        {
-            title: 'Sign Up',
-            link: '/signup'
-        },
+            title: "Profile",
+            link: `/profile/${userData.user && userData.user.id}`
+        }
     ]
 
-    return links
+    const guestLinks = [
+        {
+            title: "Homepage",
+            link: "/"
+        },
+        {
+            title: "Explore",
+            link: "/ecotrail"
+        },
+        {
+            title: "Sign Up",
+            link: "/signup"
+        },
+        {
+            title: "Sign In",
+            link: "/signin"
+        }
+    ]
+    const loggedIn = userData.loggedIn
+    return loggedIn ? authLinks : guestLinks
 }
 
 export default getNavigation
