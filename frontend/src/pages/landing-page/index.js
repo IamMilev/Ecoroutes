@@ -1,5 +1,6 @@
 import React from 'react'
 import PageLayout from "../../components/page-layout";
+import Title from "../../components/title";
 
 
 const LandingPage = () => {
@@ -9,7 +10,7 @@ const LandingPage = () => {
 
     return (
         <PageLayout>
-            <h1>Welcome to Razhodi.se</h1>
+            <Title title="Welcome to Razhodi.se" />
         </PageLayout>
     )
 }

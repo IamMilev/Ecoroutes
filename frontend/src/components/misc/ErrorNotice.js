@@ -1,10 +1,13 @@
-import React from "react";
+import React from "react"
+import styles from './error-notice.module.css'
 
-export default function ErrorNotice(props) {
+const ErrorNotice = (props) => {
   return (
-    <div className="error-notice">
+    <div className={styles['error-notice']}>
       <span>{props.message}</span>
       <button onClick={props.clearError}>X</button>
     </div>
   );
 }
+
+export default ErrorNotice

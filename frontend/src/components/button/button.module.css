@@ -6,7 +6,7 @@
     padding: 10px 15px;
     color: white;
     background-color: #048ecf;
-    max-width: 160px;
+    min-width: 160px;
     border: none;
     border-radius: 8px;
     margin-top: 40px;

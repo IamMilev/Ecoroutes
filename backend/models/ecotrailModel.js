@@ -8,6 +8,7 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
+    const id = req.body.id;
     const displayName = req.body.displayName;
     const title = req.body.title;
     const description = req.body.description;
@@ -16,6 +17,7 @@ router.route('/add').post((req, res) => {
     const date = Date.parse(req.body.date);
 
     const newEcotrail = new Ecotrail({
+        id,
         displayName,
         title,
         description,
@@ -44,6 +46,7 @@ router.route('/:id').delete((req, res) => {
 router.route('/update/:id').post((req, res) => {
     Ecotrail.findById(req.params.id)
         .then(ecotrails => {
+            ecotrails.id = req.body.id
             ecotrails.displayName = req.body.displayName;
             ecotrails.title = req.body.title;
             ecotrails.description = req.body.description;

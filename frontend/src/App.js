@@ -44,7 +44,6 @@ const App = (props) => {
 
     checkLoggedIn();
   }, []);
-  console.log(userData);
 
   if (loading) {
     return (

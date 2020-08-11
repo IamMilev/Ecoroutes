@@ -7,6 +7,7 @@ import PageLayout from "../../components/page-layout";
 import SubmitButton from "../../components/button/submit-button";
 import Input from "../../components/input";
 import Form from '../../components/form'
+import Title from "../../components/title";
 
 export default function Register() {
     const [email, setEmail] = useState();
@@ -42,7 +43,7 @@ export default function Register() {
 
     return (
         <PageLayout>
-            <h2>Register</h2>
+            <Title title='Sign up' />
             {error && (
                 <ErrorNotice message={error} clearError={() => setError(undefined)} />
             )}

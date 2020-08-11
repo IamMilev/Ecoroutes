@@ -15,7 +15,7 @@ const getNavigation = (userData) => {
         },
         {
             title: "Profile",
-            link: `/profile/${userData && userData.id}`
+            link: `/profile/${userData.user && userData.user.id}`
         }
     ]
 
@@ -25,7 +25,7 @@ const getNavigation = (userData) => {
             link: "/"
         },
         {
-            title: "Ecotrails",
+            title: "Explore",
             link: "/ecotrail"
         },
         {
@@ -37,7 +37,7 @@ const getNavigation = (userData) => {
             link: "/signin"
         }
     ]
-    const loggedIn = userData && userData.loggedIn
+    const loggedIn = userData.loggedIn
     return loggedIn ? authLinks : guestLinks
 }
 

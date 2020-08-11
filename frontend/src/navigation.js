@@ -20,7 +20,7 @@ const Navigation = () => {
                 <Route path="/addecotrail">
                     {loggedIn ? (<AddEcotrailPage />): (<Redirect to="/signin" />)}
                 </Route>
-                <Route path="/profile/:userid" >
+                <Route path="/profile" >
                     {loggedIn ? (<ProfilePage />): (<Redirect to="/signin" />)}
                 </Route>
                 <Route path="/signin">
