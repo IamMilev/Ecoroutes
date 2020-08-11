@@ -1,6 +1,6 @@
 .footer {
     background-color: white;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 40px 20px;
 }
 
@@ -11,7 +11,7 @@
 .footer-wrapper {
     display: flex;
     margin: auto;
-    max-width: 1160px;
+    max-width: 1200px;
 }
 a {
     color: black;
@@ -19,5 +19,5 @@ a {
 }
 
 a:hover {
-    color: #c7c7c7;
+    color: var(--gray-color);
 }

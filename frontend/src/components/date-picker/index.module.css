@@ -4,7 +4,7 @@
     display:block;
     width: 280px;
     border:none;
-    border-bottom:1px solid #757575;
+    border-bottom:1px solid var(--dark-gray-color);
 }
 
 .date-picker:focus {
@@ -18,7 +18,7 @@
 }
 
 .date-picker-label {
-    color:#999;
+    color: var(--gray-color);
     font-size:14px;
     position:absolute;
     top:-20px;

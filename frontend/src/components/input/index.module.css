@@ -6,15 +6,15 @@
 
 .input {
     font-size:18px;
-    padding:10px 10px 10px 0;
+    padding:10px 0;
     display:block;
-    width: 280px;
+    width: 100%;
     border:none;
-    border-bottom:1px solid #757575;
+    border-bottom:1px solid var(--dark-gray-color);
 }
 
 .input-label {
-    color:#999;
+    color: var(--gray-color);
     font-size:14px;
     font-weight:normal;
     position:absolute;
@@ -26,7 +26,7 @@
 }
 
 .input:focus ~ .input-label {
-    color:#048ecf;
+    color:var(--blue-color);
 }
 
 .border-bottom {
@@ -41,7 +41,7 @@
     width: 0;
     bottom: 0;
     position:absolute;
-    background:#048ecf;
+    background: var(--blue-color);
     transition:0.2s ease all;
     -moz-transition:0.2s ease all;
     -webkit-transition:0.2s ease all;
