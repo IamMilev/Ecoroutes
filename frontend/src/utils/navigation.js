@@ -6,7 +6,7 @@ const getNavigation = (userData) => {
             link: "/"
         },
         {
-            title: "Ecotrails",
+            title: "Explore",
             link: "/ecotrail"
         },
         {
