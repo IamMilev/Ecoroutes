@@ -32,7 +32,7 @@ const Login = () => {
                 loggedIn: true
             });
             localStorage.setItem("auth-token", loginRes.data.token);
-            history.push("/");
+            history.push(`/profile/${loginRes.data.user.id}`);
         } catch (err) {
             err.response.data.msg && setError(err.response.data.msg);
         }

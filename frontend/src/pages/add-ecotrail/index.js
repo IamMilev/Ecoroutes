@@ -31,8 +31,8 @@ const AddEcotrailPage = () => {
     const history = useHistory();
 
     const handleSubmit = async (e) => {
-
         e.preventDefault();
+
         try{
             const newEcotrail = {
                 author_id: context.userData.user.id,
@@ -98,12 +98,13 @@ const AddEcotrailPage = () => {
             default:
                 break
         }
+
     }
 
     return(
         <PageLayout>
             <Title title="Add Ecotrail" />
-            { (isFormfilled === false ) ? (<div className={styles.error}>Please fill in the full form</div>) : '' }
+            { (isFormfilled === false ) ? (<div className={styles.error}>Please fill in the full form and upload image</div>) : '' }
 
             <Form onSubmit={handleSubmit}>
                 <Input type="text" id="ecotrailTitle" label="Title" value={title} error={error.ecotrailTitle ? 'Please enter valid title' : ''} onChange={handleChange} />
