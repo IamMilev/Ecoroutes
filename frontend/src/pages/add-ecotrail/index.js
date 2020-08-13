@@ -17,14 +17,20 @@ const AddEcotrailPage = () => {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [duration, setDuration] = useState('')
-    const [imageUrl, setImageUrl] = useState(null)
-    const [error, setError] = useState({
-        image: undefined,
-        ecotrailTitle: undefined,
-        ecotrailDescription: undefined,
-        ecotrailDuration: undefined,
-    })
-    const [isFormfilled, setIsFormFilled] = useState(null)
+    const [imageUrl, setImageUrl] = useState('')
+    // const [error, setError] = useState({
+    //     image: undefined,
+    //     ecotrailTitle: undefined,
+    //     ecotrailDescription: undefined,
+    //     ecotrailDuration: undefined,
+    // })
+    const [titleError, setTitleError] = useState(undefined)
+    const [descriptionError, setDescriptionError] = useState(undefined)
+    const [durationError, setDurationError] = useState(undefined)
+    const [imageError, setImageError] = useState(undefined)
+    const [dateError, setDateError] = useState(undefined)
+
+    // const [isFormfilled, setIsFormFilled] = useState(null)
 
     const context = useContext(UserContext)
 
@@ -48,9 +54,21 @@ const AddEcotrailPage = () => {
             alert('Success')
             history.push('/ecotrail')
         } catch (err) {
-            console.log(newEcotrail)
+            if (title === '') {
+                setTitleError(true)
+            }
 
-            setIsFormFilled(false)
+            if (description === '') {
+                setDescriptionError(true)
+            }
+
+            if (duration === '') {
+                setDurationError(true)
+            }
+
+            if (imageUrl === '') {
+                setImageError(true)
+            }
         }
 
     }
@@ -62,7 +80,7 @@ const AddEcotrailPage = () => {
         }, (err, result) => {
             if (result.event === 'success') {
                 setImageUrl(result.info.url)
-                return setError({...error, image: false})
+                return setImageError(false)
             }
         })
 
@@ -71,31 +89,33 @@ const AddEcotrailPage = () => {
 
 
     const handleChange = (e) => {
-        setIsFormFilled(true)
         const {id, value} = e.target
 
         switch (id) {
             case "ecotrailTitle" :
                 setTitle(value)
                 if (value.length < 2) {
-                    return setError({...error, ecotrailTitle: true})
+                    setTitleError(true)
                 } else {
-                    return setError({...error, ecotrailTitle: false})
+                    setTitleError(false)
                 }
+                break
             case "ecotrailDescription" :
                 setDescription(value)
                 if (value.length < 2) {
-                    return setError({...error, ecotrailDescription: true})
+                    setDescriptionError(true)
                 } else {
-                    return setError({...error, ecotrailDescription: false})
+                    setDescriptionError(false)
                 }
+                break
             case "ecotrailDuration":
                 setDuration(value)
                 if (value.length === 0 || value === '0') {
-                    return setError({...error, ecotrailDuration: true})
+                    setDurationError(true)
                 } else {
-                    return setError({...error, ecotrailDuration: false})
+                    setDurationError(false)
                 }
+                break
             default:
                 break
         }
@@ -104,17 +124,15 @@ const AddEcotrailPage = () => {
     return(
         <PageLayout>
             <Title variant='title' title="Add Ecotrail" />
-            { (isFormfilled === false ) ? (<div className={styles.error}>Please fill in the full form and upload image</div>) : '' }
-
             <Form onSubmit={handleSubmit}>
-                <Input type="text" id="ecotrailTitle" label="Title" value={title} error={error.ecotrailTitle ? 'Please enter valid title' : ''} onChange={handleChange} />
-                <Input type="text" id="ecotrailDescription" label="Description" value={description} error={error.ecotrailDescription ? 'Please enter valid description' : ''} onChange={handleChange} />
-                <Input type="number" id="ecotrailDuration" label="Duration in minutes" value={duration} error={error.ecotrailDuration ? 'Please enter valid duration' : ''} onChange={handleChange} />
-                <DatePick date={date} setDate={setDate} />
+                <Input type="text" id="ecotrailTitle" label="Title" value={title} error={titleError ? 'Please enter valid title' : ''} onChange={handleChange} />
+                <Input type="text" id="ecotrailDescription" label="Description" value={description} error={descriptionError ? 'Please enter valid description' : ''} onChange={handleChange} />
+                <Input type="number" id="ecotrailDuration" label="Duration in minutes" value={duration} error={durationError ? 'Please enter valid duration' : ''} onChange={handleChange} />
+                <DatePick date={date} setDate={setDate} setDateError={setDateError} />
                 {imageUrl ? (<img alt="Uploaded thumbnail" className={styles['img-thumbnail']} src={imageUrl} />) : '' }
-                { error.date ? (<div className={styles.error}>Please enter valid date</div>) : ''}
+                { dateError ? (<div className={styles.error}>Please enter valid date</div>) : ''}
                 <Button onClick={openWidget} type='button' title={imageUrl ? 'Upload Another Image' : 'Upload Image'} />
-                { error.image ? (<div className={styles.error}>Please Upload image</div>) : ''}
+                { imageError ? (<div className={styles.error}>Please Upload image</div>) : ''}
 
                 <SubmitButton type="submit" title="Add Ecotrail"/>
             </Form>

@@ -4,23 +4,22 @@ import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.min.css'
 
 
-const DatePick = ({ id, date, setDate}) => {
-    // let dd = date.getDate()
-    // let yyyy = date.getFullYear()
-    //
-    // if (dd < 10) {dd = '0' + dd}
-    // let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    // let month = months[date.getMonth()]
+const DatePick = ({ id, date, setDate, setDateError}) => {
 
-    // let today = month + ' ' + dd + ',' + yyyy
-
-    // console.log(date)
-    // console.log(today)
+    const onChange = (date) => {
+        if (date === null) {
+            setDate(date)
+            setDateError(true)
+        } else {
+            setDate(date)
+            setDateError(false)
+        }
+    }
 
     return(
         <label className={styles['date-picker-wrapper']} htmlFor="date-picker">
             <span className={styles['date-picker-label']}>Pick a date</span>
-            <DatePicker className={styles['date-picker']} id={id} selected={date} onChange={date => setDate(date)} dateFormat="MMMM d, yyyy" />
+            <DatePicker className={styles['date-picker']} id={id} selected={date} onChange={onChange} dateFormat="MMMM d, yyyy" />
         </label>
     )
 }

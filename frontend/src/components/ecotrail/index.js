@@ -1,10 +1,12 @@
 import React from "react"
 import styles from './index.module.css'
 import Title from "../title/heading";
+import {Link} from "react-router-dom";
 
-const Ecotrail = ({ image, title, description, author, date }) => {
+const Ecotrail = ({ image, title, description, author, date, id }) => {
+    // console.log(id)
     return (
-        <div className={styles.container}>
+        <Link to={`/${id}`} className={styles.container}>
             <div className={styles['img-wrapper']}>
                 <img src={image} alt={description} className={styles.img} />
             </div>
@@ -14,7 +16,7 @@ const Ecotrail = ({ image, title, description, author, date }) => {
                 <div className={styles['ecotrail-author']}>{author}</div>
                 <div className={styles['ecotrail-date']}>{date.slice(0, 10)}</div>
             </div>
-        </div>
+        </Link>
     )
 }
 

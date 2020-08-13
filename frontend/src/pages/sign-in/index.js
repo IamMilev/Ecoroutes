@@ -8,6 +8,7 @@ import Title from "../../components/title/heading"
 import Input from "../../components/input";
 import SubmitButton from "../../components/button/submit-button";
 import Form from "../../components/form";
+import AuthLayout from "../../components/auth-layout";
 
 const Login = () => {
     const [email, setEmail] = useState();
@@ -40,27 +41,29 @@ const Login = () => {
 
     return (
         <PageLayout>
-            <Title variant='title' title="Sign In" />
-            {error && (
-                <ErrorNotice message={error} clearError={() => setError(undefined)} />
-            )}
-            <Form onSubmit={submit} >
-                <Input
-                    label="Email"
-                    id="login-email"
-                    type="email"
-                    onChange={(e) => setEmail(e.target.value)} />
+            <AuthLayout>
+                <Title variant='title' title="Sign In" />
+                {error && (
+                    <ErrorNotice message={error} clearError={() => setError(undefined)} />
+                )}
+                <Form onSubmit={submit} >
+                    <Input
+                        label="Email"
+                        id="login-email"
+                        type="email"
+                        onChange={(e) => setEmail(e.target.value)} />
 
-                <Input
-                    id="login-password"
-                    type="password"
-                    label="Password"
-                    onChange={(e) => setPassword(e.target.value)}
+                    <Input
+                        id="login-password"
+                        type="password"
+                        label="Password"
+                        onChange={(e) => setPassword(e.target.value)}
                     />
 
-                <SubmitButton type="submit" title="Sign In" />
-            </Form>
-            <div>Don't have an account? <button onClick={() => {history.push('/signup')}}>Sign up now!</button></div>
+                    <SubmitButton type="submit" title="Sign In" />
+                </Form>
+                <div>Don't have an account? <button onClick={() => {history.push('/signup')}}>Sign up now!</button></div>
+            </AuthLayout>
         </PageLayout>
     );
 }

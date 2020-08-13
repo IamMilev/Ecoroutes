@@ -24,9 +24,9 @@ class EcotrailListPage extends Component {
     renderEcotrails() {
         const { ecotrails } = this.state
         return ecotrails.map((ecotrail, index) => {
-            console.log(ecotrail)
+            // console.log(ecotrail._id)
             return(
-                <Ecotrail key={ecotrail._id} {...ecotrail} />
+                <Ecotrail key={ecotrail._id} {...ecotrail} id={ecotrail._id} />
             )
         });
     }

@@ -8,6 +8,7 @@ import SubmitButton from "../../components/button/submit-button";
 import Input from "../../components/input";
 import Form from '../../components/form'
 import Title from "../../components/title/heading";
+import AuthLayout from "../../components/auth-layout";
 
 export default function Register() {
     const [email, setEmail] = useState();
@@ -43,34 +44,36 @@ export default function Register() {
 
     return (
         <PageLayout>
-            <Title variant='title' title='Sign up' />
-            {error && (
-                <ErrorNotice message={error} clearError={() => setError(undefined)} />
-            )}
-            <Form onSubmit={submit}>
-                <Input type="email"
-                       label="Email"
-                       id="register-email"
-                       onChange={(e) => setEmail(e.target.value)} />
+            <AuthLayout>
+                <Title variant='title' title='Sign up' />
+                {error && (
+                    <ErrorNotice message={error} clearError={() => setError(undefined)} />
+                )}
+                <Form onSubmit={submit}>
+                    <Input type="email"
+                           label="Email"
+                           id="register-email"
+                           onChange={(e) => setEmail(e.target.value)} />
 
-                <Input type="password"
-                       label="Password"
-                       id="register-password"
-                       onChange={(e) => setPassword(e.target.value)} />
+                    <Input type="password"
+                           label="Password"
+                           id="register-password"
+                           onChange={(e) => setPassword(e.target.value)} />
 
-                <Input type="password"
-                       label="Verify Password"
-                       id="register-repassword"
-                       onChange={(e) => setPasswordCheck(e.target.value)} />
+                    <Input type="password"
+                           label="Verify Password"
+                           id="register-repassword"
+                           onChange={(e) => setPasswordCheck(e.target.value)} />
 
-                <Input type="text"
-                       label="Display Name"
-                       id="register-display-name"
-                       onChange={(e) => setDisplayName(e.target.value)} />
+                    <Input type="text"
+                           label="Display Name"
+                           id="register-display-name"
+                           onChange={(e) => setDisplayName(e.target.value)} />
 
-                <SubmitButton type="submit" title="Register"/>
-            </Form>
-            <div>Already have an account? <button onClick={() => {history.push('/signin')}}>Sign in now!</button></div>
+                    <SubmitButton type="submit" title="Register"/>
+                </Form>
+                <div>Already have an account? <button onClick={() => {history.push('/signin')}}>Sign in now!</button></div>
+            </AuthLayout>
         </PageLayout>
     );
 }

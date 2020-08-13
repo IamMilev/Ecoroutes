@@ -26,10 +26,14 @@
 .info-wrapper {
     padding: 20px;
     background: white;
+    display: flex;
+    flex-direction: column;
 }
 
 .ecotrail-desc {
     margin-bottom: 15px;
+    overflow: hidden;
+    height: 38px;
 }
 
 .ecotrail-date {

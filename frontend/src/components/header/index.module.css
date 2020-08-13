@@ -5,7 +5,7 @@ header {
     color: black;
     position: fixed;
     top: 0;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     z-index: 100;
@@ -25,4 +25,11 @@ header {
     list-style: none;
     max-width: 1200px;
     padding: 0 20px;
+    font-size: 14px;
+}
+
+@media only screen and (max-width: 600px) {
+    .navigation {
+        font-size: 12px;
+    }
 }
