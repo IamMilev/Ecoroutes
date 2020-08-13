@@ -1,4 +1,17 @@
+/* Reset */
 body {
   margin: 0;
   padding: 0;
+}
+
+/* Variables */
+:root {
+  --button-color: var(--blue-color);
+  --button-hover-color: var(--dark-blue-color);
+  --blue-color: #048ecf;
+  --dark-blue-color: #0685bf;
+  --dark-gray-color: #757575;
+  --gray-color: #999999;
+  --red-color: #df4343;
+  --light-red-color: #f8d6d6;
 }

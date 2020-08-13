@@ -1,14 +1,15 @@
 import React from "react"
 import styles from './index.module.css'
+import Title from "../title";
 
-const Ecotrail = ({ image, title, description, username, index }) => {
+const Ecotrail = ({ image, title, description, author, date }) => {
     return (
         <div className={styles.container}>
             <img src={image} alt={description} className={styles.image}/> <br/>
-            {title} <br/>
+            <Title title={title}/> <br/>
             {description} <br/>
-            {username} <br/>
-            {index}
+            {date} <br/>
+            {author} <br/>
         </div>
     )
 }
