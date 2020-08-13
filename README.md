@@ -1,5 +1,5 @@
 # Razhodi.se
-<a href="https://github.com/IamMilev/Ecoroutes/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/IamMilev/Ecoroutes"></a> <a href="https://github.com/IamMilev/Ecoroutes/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/IamMilev/Ecoroutes"></a> <a href="https://github.com/IamMilev/Ecoroutes/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/IamMilev/Ecoroutes"></a>
+<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/iammilev/ecoroutes"><a href="https://github.com/IamMilev/Ecoroutes/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/IamMilev/Ecoroutes"></a> <a href="https://github.com/IamMilev/Ecoroutes/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/IamMilev/Ecoroutes"></a> <a href="https://github.com/IamMilev/Ecoroutes/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/IamMilev/Ecoroutes"></a>
 
 
 ## Description
@@ -34,5 +34,5 @@ When the repository is fetched, you can navigate to /backend folder, using the t
 
 After that you can open new terminal, navigate to /frontend folder and run "npm start" to start the frontend part.
 ### Example:
-"C:\Users\Username\Project>cd frontend" <br>
-"C:\Users\Username\Project\frontend>npm start" <br>
+`"C:\Users\Username\Project>cd frontend"
+ "C:\Users\Username\Project\frontend>npm start"`
