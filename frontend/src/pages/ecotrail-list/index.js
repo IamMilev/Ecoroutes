@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import styles from './index.module.css'
 import PageLayout from "../../components/page-layout";
 import Ecotrail from "../../components/ecotrail";
-import Title from "../../components/title";
+import Title from "../../components/title/heading";
 
 class EcotrailListPage extends Component {
     constructor(props) {
@@ -23,8 +23,8 @@ class EcotrailListPage extends Component {
 
     renderEcotrails() {
         const { ecotrails } = this.state
-
         return ecotrails.map((ecotrail, index) => {
+            console.log(ecotrail)
             return(
                 <Ecotrail key={ecotrail._id} {...ecotrail} />
             )
@@ -39,7 +39,7 @@ class EcotrailListPage extends Component {
         return (
             <PageLayout>
                 <div className={styles.container}>
-                    <Title title="Ecotrails" />
+                    <Title variant="title" title="Ecotrails" />
                     <div className={styles['ecotrails-wrapper']}>
                         {this.renderEcotrails()}
                     </div>

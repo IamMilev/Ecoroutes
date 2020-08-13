@@ -5,8 +5,8 @@
     font-weight: 600;
     padding: 10px 15px;
     color: white;
-    background-color: var(--blue-color);
-    min-width: 160px;
+    background-color: var(--green-color);
+    width: 160px;
     border: none;
     border-radius: 8px;
     margin-top: 40px;

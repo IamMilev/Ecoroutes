@@ -1,8 +1,45 @@
 .container {
-    max-width: 1200px;
-    padding-right: 20px;
+    max-width: 300px;
+    border: 1px solid var(--gray-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .05);
+    margin-bottom: 50px;
+    transition: transform .3s ease;
 }
 
-.image {
-    max-width: 350px;
+.container:hover {
+    transform: scale(1.02);
+}
+
+.img-wrapper {
+    max-width: 300px;
+    max-height: 220px;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.img {
+    max-height: 300px;
+}
+
+.info-wrapper {
+    padding: 20px;
+    background: white;
+}
+
+.ecotrail-desc {
+    margin-bottom: 15px;
+}
+
+.ecotrail-date {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--gray-color);
+}
+
+.ecotrail-author {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--dark-gray-color);
 }

@@ -7,6 +7,7 @@ import Login from "./pages/sign-in";
 import Register from "./pages/sign-up";
 import UserContext from "./context/userContext";
 import LandingPage from "./pages/landing-page";
+import ErrorPage from "./pages/error";
 
 const Navigation = () => {
     const context = useContext(UserContext)
@@ -20,7 +21,7 @@ const Navigation = () => {
                 <Route path="/addecotrail">
                     {loggedIn ? (<AddEcotrailPage />): (<Redirect to="/signin" />)}
                 </Route>
-                <Route path="/profile" >
+                <Route path="/profile/:userid" >
                     {loggedIn ? (<ProfilePage />): (<Redirect to="/signin" />)}
                 </Route>
                 <Route path="/signin">
@@ -29,6 +30,7 @@ const Navigation = () => {
                 <Route path="/signup">
                     {loggedIn ? (<Redirect to="/" />): (<Register />)}
                 </Route>
+                <Route component={ErrorPage} />
             </Switch>
         </BrowserRouter>
     )

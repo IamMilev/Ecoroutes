@@ -4,7 +4,7 @@ import UserContext from "../../context/userContext";
 import Axios from "axios";
 import ErrorNotice from "../../components/misc/ErrorNotice";
 import PageLayout from "../../components/page-layout";
-import Title from "../../components/title"
+import Title from "../../components/title/heading"
 import Input from "../../components/input";
 import SubmitButton from "../../components/button/submit-button";
 import Form from "../../components/form";
@@ -40,7 +40,7 @@ const Login = () => {
 
     return (
         <PageLayout>
-            <Title title="Sign In" />
+            <Title variant='title' title="Sign In" />
             {error && (
                 <ErrorNotice message={error} clearError={() => setError(undefined)} />
             )}
