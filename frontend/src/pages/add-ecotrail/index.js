@@ -10,7 +10,7 @@ import UserContext from '../../context/userContext'
 import styles from './index.module.css'
 import Button from "../../components/button/standard-button";
 import Axios from "axios";
-// import ErrorNotice from "../../components/misc/ErrorNotice";
+import HalfLayout from "../../components/half-layout";
 
 const AddEcotrailPage = () => {
     const [date, setDate] = useState(new Date())
@@ -18,19 +18,12 @@ const AddEcotrailPage = () => {
     const [description, setDescription] = useState('')
     const [duration, setDuration] = useState('')
     const [imageUrl, setImageUrl] = useState('')
-    // const [error, setError] = useState({
-    //     image: undefined,
-    //     ecotrailTitle: undefined,
-    //     ecotrailDescription: undefined,
-    //     ecotrailDuration: undefined,
-    // })
     const [titleError, setTitleError] = useState(undefined)
     const [descriptionError, setDescriptionError] = useState(undefined)
     const [durationError, setDurationError] = useState(undefined)
     const [imageError, setImageError] = useState(undefined)
     const [dateError, setDateError] = useState(undefined)
 
-    // const [isFormfilled, setIsFormFilled] = useState(null)
 
     const context = useContext(UserContext)
 
@@ -123,19 +116,21 @@ const AddEcotrailPage = () => {
 
     return(
         <PageLayout>
-            <Title variant='title' title="Add Ecotrail" />
-            <Form onSubmit={handleSubmit}>
-                <Input type="text" id="ecotrailTitle" label="Title" value={title} error={titleError ? 'Please enter valid title' : ''} onChange={handleChange} />
-                <Input type="text" id="ecotrailDescription" label="Description" value={description} error={descriptionError ? 'Please enter valid description' : ''} onChange={handleChange} />
-                <Input type="number" id="ecotrailDuration" label="Duration in minutes" value={duration} error={durationError ? 'Please enter valid duration' : ''} onChange={handleChange} />
-                <DatePick date={date} setDate={setDate} setDateError={setDateError} />
-                {imageUrl ? (<img alt="Uploaded thumbnail" className={styles['img-thumbnail']} src={imageUrl} />) : '' }
-                { dateError ? (<div className={styles.error}>Please enter valid date</div>) : ''}
-                <Button onClick={openWidget} type='button' title={imageUrl ? 'Upload Another Image' : 'Upload Image'} />
-                { imageError ? (<div className={styles.error}>Please Upload image</div>) : ''}
+            <HalfLayout>
+                <Title variant='title' title="Add Ecotrail" />
+                <Form onSubmit={handleSubmit}>
+                    <Input type="text" id="ecotrailTitle" label="Title" value={title} error={titleError ? 'Please enter valid title' : ''} onChange={handleChange} />
+                    <Input type="text" id="ecotrailDescription" label="Description" value={description} error={descriptionError ? 'Please enter valid description' : ''} onChange={handleChange} />
+                    <Input type="number" id="ecotrailDuration" label="Duration in minutes" value={duration} error={durationError ? 'Please enter valid duration' : ''} onChange={handleChange} />
+                    <DatePick date={date} setDate={setDate} setDateError={setDateError} />
+                    {imageUrl ? (<img alt="Uploaded thumbnail" className={styles['img-thumbnail']} src={imageUrl} />) : '' }
+                    { dateError ? (<div className={styles.error}>Please enter valid date</div>) : ''}
+                    <Button onClick={openWidget} type='button' title={imageUrl ? 'Upload Another Image' : 'Upload Image'} />
+                    { imageError ? (<div className={styles.error}>Please Upload image</div>) : ''}
 
-                <SubmitButton type="submit" title="Add Ecotrail"/>
-            </Form>
+                    <SubmitButton type="submit" title="Add Ecotrail"/>
+                </Form>
+            </HalfLayout>
         </PageLayout>
     )
 }

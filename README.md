@@ -29,10 +29,10 @@ hook which contains object with the error messages.
 ## Technical Description
 When the repository is fetched, you can navigate to /backend folder, using the terminal and run "nodemon start" to start the server.
 ### Example:
-"C:\Users\Username\Project>cd backend" <br>
-"C:\Users\Username\Project\backend>nodemon start" <br>
+`"C:\Users\Username\Project>cd backend"` <br>
+`"C:\Users\Username\Project\backend>nodemon start"` <br>
 
 After that you can open new terminal, navigate to /frontend folder and run "npm start" to start the frontend part.
 ### Example:
-`"C:\Users\Username\Project>cd frontend"
- "C:\Users\Username\Project\frontend>npm start"`
+`"C:\Users\Username\Project>cd frontend"` <br>
+`"C:\Users\Username\Project\frontend>npm start"`

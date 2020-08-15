@@ -6,7 +6,7 @@
 
 .header-list-link:hover {
     color: black;
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid var(--green-color);
 }
 
 .header-list-item {
@@ -15,4 +15,8 @@
 
 .footer-list-item {
     margin-left: 10px;
+}
+
+.active {
+    border-bottom: 2px solid var(--green-color);
 }

@@ -8,7 +8,8 @@ import Title from "../../components/title/heading"
 import Input from "../../components/input";
 import SubmitButton from "../../components/button/submit-button";
 import Form from "../../components/form";
-import AuthLayout from "../../components/auth-layout";
+import HalfLayout from "../../components/half-layout";
+import ChangeButton from "../../components/button/change-button";
 
 const Login = () => {
     const [email, setEmail] = useState();
@@ -41,7 +42,7 @@ const Login = () => {
 
     return (
         <PageLayout>
-            <AuthLayout>
+            <HalfLayout>
                 <Title variant='title' title="Sign In" />
                 {error && (
                     <ErrorNotice message={error} clearError={() => setError(undefined)} />
@@ -62,8 +63,11 @@ const Login = () => {
 
                     <SubmitButton type="submit" title="Sign In" />
                 </Form>
-                <div>Don't have an account? <button onClick={() => {history.push('/signup')}}>Sign up now!</button></div>
-            </AuthLayout>
+                <div>
+                    Don't have an account?
+                    <ChangeButton title='Join us now!' onClick={() => {history.push('/signup')}} />
+                </div>
+            </HalfLayout>
         </PageLayout>
     );
 }

@@ -1,16 +1,17 @@
 .container {
     display: flex;
-    height: 80vh;
+    height: fit-content;
 }
 
 .half {
-    flex: 0 0 50%;
-    max-width: 50%;
+    flex: 0 0 45%;
+    max-width: 45%;
     padding: 20px 20px;
     align-items: flex-start;
     justify-content: center;
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .illustration {
@@ -21,6 +22,7 @@
     font-weight: bold;
     font-style: italic;
     color: #52bc0f;
+    height: 90vh;
 }
 
 .desc {

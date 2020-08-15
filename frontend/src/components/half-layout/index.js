@@ -2,7 +2,7 @@ import React from 'react'
 import styles from "./index.module.css";
 
 
-const AuthLayout = ({ children }) => {
+const HalfLayout = ({ children }) => {
     return(
         <div className={styles.container}>
             <div className={`${styles.half} ${styles.illustration}`}>
@@ -16,4 +16,4 @@ const AuthLayout = ({ children }) => {
     )
 }
 
-export default AuthLayout
+export default HalfLayout

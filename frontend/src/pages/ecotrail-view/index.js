@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import PageLayout from "../../components/page-layout";
+import styles from './index.module.css'
+import InfoWrapper from "../../components/ecotrail-info-wrapper";
 
 const EcotrailViewPage = (props) => {
     const [post, setPost] = useState({
@@ -10,7 +12,9 @@ const EcotrailViewPage = (props) => {
         description: '',
         duration: null,
         image: '',
-        updatedAt: ''
+        updatedAt: '',
+        createdAt: '',
+        date: ''
     })
 
     const {postId} = props.match.params
@@ -30,10 +34,27 @@ const EcotrailViewPage = (props) => {
         fetchEcotrails()
     }, [postId])
 
-
     return(
         <PageLayout>
-            {post.title}
+            <div className={styles['content-wrapper']}>
+                <h1 className={styles.title}>{post.title}</h1>
+                <div className={styles.author}>by {post.author}</div>
+                <div className={styles['image-wrapper']}>
+                    <img src={post.image} alt={post.title} />
+                </div>
+                <InfoWrapper title='Description'>
+                    {post.description}
+                </InfoWrapper>
+                <InfoWrapper title='Ecotrail duration'>
+                    {post.duration < 60 ? post.duration + ' Minutes' : (post.duration/60).toFixed(2) + ' Hours'}
+                </InfoWrapper>
+                <InfoWrapper title='Date of visit'>
+                    {post.date.slice(0, 10)}
+                </InfoWrapper>
+                <InfoWrapper title='Created at'>
+                    {post.createdAt.slice(0, 10)}
+                </InfoWrapper>
+            </div>
         </PageLayout>
     )
 }

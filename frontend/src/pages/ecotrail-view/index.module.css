@@ -1,0 +1,26 @@
+.content-wrapper {
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.title {
+    color: var(--green-color);
+    margin-bottom: 10px;
+}
+
+.author {
+    color: var(--dark-gray-color);
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.image-wrapper {
+    border-radius: 10px;
+    overflow: hidden;
+    max-width: 720px;
+}

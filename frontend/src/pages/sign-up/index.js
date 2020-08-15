@@ -8,7 +8,8 @@ import SubmitButton from "../../components/button/submit-button";
 import Input from "../../components/input";
 import Form from '../../components/form'
 import Title from "../../components/title/heading";
-import AuthLayout from "../../components/auth-layout";
+import HalfLayout from "../../components/half-layout";
+import ChangeButton from "../../components/button/change-button";
 
 export default function Register() {
     const [email, setEmail] = useState();
@@ -44,7 +45,7 @@ export default function Register() {
 
     return (
         <PageLayout>
-            <AuthLayout>
+            <HalfLayout>
                 <Title variant='title' title='Sign up' />
                 {error && (
                     <ErrorNotice message={error} clearError={() => setError(undefined)} />
@@ -72,8 +73,11 @@ export default function Register() {
 
                     <SubmitButton type="submit" title="Register"/>
                 </Form>
-                <div>Already have an account? <button onClick={() => {history.push('/signin')}}>Sign in now!</button></div>
-            </AuthLayout>
+                <div>
+                    Already have an account?
+                    <ChangeButton title='Sign in now!' onClick={() => {history.push('/signin')}} />
+                </div>
+            </HalfLayout>
         </PageLayout>
     );
 }
