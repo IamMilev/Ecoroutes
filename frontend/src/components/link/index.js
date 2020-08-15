@@ -1,6 +1,6 @@
 import React from "react"
 import styles from "./index.module.css"
-import {Link, NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const LinkComponent = ({ href, title, type }) => {
     return (
