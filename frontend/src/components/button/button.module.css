@@ -1,21 +1,35 @@
-
 .btn {
     display: block;
     font-size: 1rem;
     font-weight: 600;
     padding: 10px 15px;
     color: white;
-    background-color: #048ecf;
-    min-width: 160px;
+    background-color: var(--green-color);
+    width: 160px;
     border: none;
     border-radius: 8px;
     margin-top: 40px;
 }
 
 .btn:hover {
-    background-color: #0685bf;
+    background-color: var(--button-hover-color);
 }
 
 .btn:focus {
     outline: none;
+}
+
+.btn-change {
+    appearance: none;
+    border: none;
+    background: none;
+    font-size: 16px;
+    color: var(--green-color);
+    margin: 0 5px;
+    padding: 0;
+    border-bottom: 1px solid transparent;
+}
+
+.btn-change:hover {
+    border-bottom: 1px solid var(--dark-green-color);
 }

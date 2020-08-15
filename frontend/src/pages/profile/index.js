@@ -3,7 +3,7 @@ import PageLayout from "../../components/page-layout";
 import UserContext from "../../context/userContext";
 import { useHistory } from "react-router-dom";
 import Button from "../../components/button/standard-button";
-import Title from "../../components/title";
+import Title from "../../components/title/heading";
 
 
 const ProfilePage = () => {
@@ -26,7 +26,7 @@ const ProfilePage = () => {
 
     return(
             <PageLayout>
-                <Title title={'Welcome, ' + user.displayName }/>
+                <Title variant='title' title={'Welcome, ' + user.displayName }/>
                 <Button onClick={logout} title="Log Out" />
             </PageLayout>
         )

@@ -1,12 +1,11 @@
 .error-notice {
     margin: 1rem 0;
     padding: 0.5rem;
-    border: 1px solid #e07c7c;
     border-radius: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f8d6d6;
+    background-color: var(--light-red-color);
     max-width: 300px;
 }
 .error-notice button {
@@ -14,7 +13,7 @@
     height: 24px;
     padding: 5px;
     border-radius: 50%;
-    background-color: #df4343;
-    color: #ffffff;
+    background-color: var(--red-color);
+    color: white;
     border: none;
 }
