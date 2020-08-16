@@ -1,12 +1,12 @@
 import React from "react"
 import styles from './index.module.css'
 import Title from "../title/heading";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Ecotrail = ({ image, title, description, author, date, id }) => {
-    // console.log(id)
+    // let { url } = useRouteMatch();
     return (
-        <Link to={`/${id}`} className={styles.container}>
+        <Link to={`/view/${id}`} className={styles.container}>
             <div className={styles['img-wrapper']}>
                 <img src={image} alt={description} className={styles.img} />
             </div>

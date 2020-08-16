@@ -2,8 +2,9 @@ import React, {useEffect, useState} from 'react'
 import PageLayout from "../../components/page-layout";
 import styles from './index.module.css'
 import InfoWrapper from "../../components/ecotrail-info-wrapper";
+import { useParams } from 'react-router-dom'
 
-const EcotrailViewPage = (props) => {
+const EcotrailViewPage = () => {
     const [post, setPost] = useState({
         _id: '',
         author_id: '',
@@ -17,7 +18,8 @@ const EcotrailViewPage = (props) => {
         date: ''
     })
 
-    const {postId} = props.match.params
+    let {trailId} = useParams();
+    // const {trailId} = this.props.match.params
 
     useEffect( () =>{
         const fetchEcotrails = async () => {
@@ -26,13 +28,13 @@ const EcotrailViewPage = (props) => {
 
 
             for (let i = 0; i < ecotrails.length; i++) {
-                if (ecotrails[i]._id === postId) {
+                if (ecotrails[i]._id === trailId) {
                     setPost(ecotrails[i])
                 }
             }
         }
         fetchEcotrails()
-    }, [postId])
+    }, [trailId])
 
     return(
         <PageLayout>

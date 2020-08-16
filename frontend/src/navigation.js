@@ -31,7 +31,9 @@ const Navigation = () => {
                 <Route path="/signup">
                     {loggedIn ? (<Redirect to="/" />): (<Register />)}
                 </Route>
-                <Route path="/:postId" component={EcotrailViewPage} />
+                <Route path={`/view/:trailId`} >
+                    <EcotrailViewPage/>
+                </Route>
                 <Route component={ErrorPage} />
             </Switch>
         </BrowserRouter>
