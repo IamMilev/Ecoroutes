@@ -26,7 +26,7 @@
 }
 
 .input:focus ~ .input-label {
-    color:var(--blue-color);
+    color:var(--green-color);
 }
 
 .border-bottom {
@@ -41,7 +41,7 @@
     width: 0;
     bottom: 0;
     position:absolute;
-    background: var(--blue-color);
+    background: var(--green-color);
     transition:0.2s ease all;
     -moz-transition:0.2s ease all;
     -webkit-transition:0.2s ease all;

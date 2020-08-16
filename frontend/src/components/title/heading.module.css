@@ -1,0 +1,9 @@
+.title {
+    color: var(--green-color);
+}
+
+.ecotrail-title {
+    color: var(--green-color);
+    font-size: 25px;
+    margin-bottom: 10px;
+}

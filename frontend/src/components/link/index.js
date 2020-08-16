@@ -1,14 +1,13 @@
-
 import React from "react"
 import styles from "./index.module.css"
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const LinkComponent = ({ href, title, type }) => {
     return (
         <div className={styles[`${type}-list-item`]}>
-            <Link to={href} className={styles[`${type}-list-link`]}>
+            <NavLink exact to={href} activeClassName={styles['active']} className={styles[`${type}-list-link`]}>
                 {title}
-            </Link>
+            </NavLink>
         </div>
     )
 }

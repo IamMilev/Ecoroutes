@@ -4,9 +4,9 @@ import App from "./App";
 import Navigation from "./navigation";
 
 ReactDOM.render(
-    <React.StrictMode>
+    // <React.StrictMode>
         <App>
             <Navigation />
-        </App>
-    </React.StrictMode>,
+        </App>,
+    // </React.StrictMode>,
     document.querySelector("#root"));

@@ -4,10 +4,12 @@ import UserContext from "../../context/userContext";
 import Axios from "axios";
 import ErrorNotice from "../../components/misc/ErrorNotice";
 import PageLayout from "../../components/page-layout";
-import Title from "../../components/title"
+import Title from "../../components/title/heading"
 import Input from "../../components/input";
 import SubmitButton from "../../components/button/submit-button";
 import Form from "../../components/form";
+import HalfLayout from "../../components/half-layout";
+import ChangeButton from "../../components/button/change-button";
 
 const Login = () => {
     const [email, setEmail] = useState();
@@ -40,27 +42,32 @@ const Login = () => {
 
     return (
         <PageLayout>
-            <Title title="Sign In" />
-            {error && (
-                <ErrorNotice message={error} clearError={() => setError(undefined)} />
-            )}
-            <Form onSubmit={submit} >
-                <Input
-                    label="Email"
-                    id="login-email"
-                    type="email"
-                    onChange={(e) => setEmail(e.target.value)} />
+            <HalfLayout>
+                <Title variant='title' title="Sign In" />
+                {error && (
+                    <ErrorNotice message={error} clearError={() => setError(undefined)} />
+                )}
+                <Form onSubmit={submit} >
+                    <Input
+                        label="Email"
+                        id="login-email"
+                        type="email"
+                        onChange={(e) => setEmail(e.target.value)} />
 
-                <Input
-                    id="login-password"
-                    type="password"
-                    label="Password"
-                    onChange={(e) => setPassword(e.target.value)}
+                    <Input
+                        id="login-password"
+                        type="password"
+                        label="Password"
+                        onChange={(e) => setPassword(e.target.value)}
                     />
 
-                <SubmitButton type="submit" title="Sign In" />
-            </Form>
-            <div>Don't have an account? <button onClick={() => {history.push('/signup')}}>Sign up now!</button></div>
+                    <SubmitButton type="submit" title="Sign In" />
+                </Form>
+                <div>
+                    Don't have an account?
+                    <ChangeButton title='Join us now!' onClick={() => {history.push('/signup')}} />
+                </div>
+            </HalfLayout>
         </PageLayout>
     );
 }

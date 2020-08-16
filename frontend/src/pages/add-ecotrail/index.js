@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react'
 import { useHistory } from 'react-router-dom'
 import PageLayout from "../../components/page-layout";
-import Title from "../../components/title";
+import Title from "../../components/title/heading";
 import SubmitButton from "../../components/button/submit-button";
 import Input from "../../components/input";
 import Form from "../../components/form";
@@ -10,21 +10,20 @@ import UserContext from '../../context/userContext'
 import styles from './index.module.css'
 import Button from "../../components/button/standard-button";
 import Axios from "axios";
-// import ErrorNotice from "../../components/misc/ErrorNotice";
+import HalfLayout from "../../components/half-layout";
 
 const AddEcotrailPage = () => {
     const [date, setDate] = useState(new Date())
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [duration, setDuration] = useState('')
-    const [image, setImage] = useState(null)
-    const [error, setError] = useState({
-        image: undefined,
-        ecotrailTitle: undefined,
-        ecotrailDescription: undefined,
-        ecotrailDuration: undefined,
-    })
-    const [isFormfilled, setIsFormFilled] = useState(null)
+    const [imageUrl, setImageUrl] = useState('')
+    const [titleError, setTitleError] = useState(undefined)
+    const [descriptionError, setDescriptionError] = useState(undefined)
+    const [durationError, setDurationError] = useState(undefined)
+    const [imageError, setImageError] = useState(undefined)
+    const [dateError, setDateError] = useState(undefined)
+
 
     const context = useContext(UserContext)
 
@@ -33,22 +32,36 @@ const AddEcotrailPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        try{
-            const newEcotrail = {
-                author_id: context.userData.user.id,
-                author: context.userData.user.displayName,
-                title: title,
-                description: description,
-                duration: duration,
-                date: date,
-                image: image
-            }
+        const newEcotrail = {
+            author_id: context.userData.user.id,
+            author: context.userData.user.displayName,
+            title: title,
+            description: description,
+            duration: duration,
+            date: date,
+            image: imageUrl
+        }
 
+        try{
             await Axios.post('http://localhost:5000/ecotrail/add', newEcotrail)
             alert('Success')
             history.push('/ecotrail')
         } catch (err) {
-            setIsFormFilled(false)
+            if (title === '') {
+                setTitleError(true)
+            }
+
+            if (description === '') {
+                setDescriptionError(true)
+            }
+
+            if (duration === '') {
+                setDurationError(true)
+            }
+
+            if (imageUrl === '') {
+                setImageError(true)
+            }
         }
 
     }
@@ -59,65 +72,65 @@ const AddEcotrailPage = () => {
             uploadPreset: 'razhodise'
         }, (err, result) => {
             if (result.event === 'success') {
-                setImage(result.info.url)
-                return setError({...error, image: false})
-            } else if (result.event === undefined || result.event === 'abort') {
-                return setError({...error, image: true})
+                setImageUrl(result.info.url)
+                return setImageError(false)
             }
         })
 
         widget.open()
     }
 
+
     const handleChange = (e) => {
-        setIsFormFilled(true)
         const {id, value} = e.target
 
         switch (id) {
             case "ecotrailTitle" :
                 setTitle(value)
                 if (value.length < 2) {
-                    return setError({...error, ecotrailTitle: true})
+                    setTitleError(true)
                 } else {
-                    return setError({...error, ecotrailTitle: false})
+                    setTitleError(false)
                 }
+                break
             case "ecotrailDescription" :
                 setDescription(value)
                 if (value.length < 2) {
-                    return setError({...error, ecotrailDescription: true})
+                    setDescriptionError(true)
                 } else {
-                    return setError({...error, ecotrailDescription: false})
+                    setDescriptionError(false)
                 }
+                break
             case "ecotrailDuration":
                 setDuration(value)
                 if (value.length === 0 || value === '0') {
-                    return setError({...error, ecotrailDuration: true})
+                    setDurationError(true)
                 } else {
-                    return setError({...error, ecotrailDuration: false})
+                    setDurationError(false)
                 }
+                break
             default:
                 break
         }
-
     }
 
     return(
         <PageLayout>
-            <Title title="Add Ecotrail" />
-            { (isFormfilled === false ) ? (<div className={styles.error}>Please fill in the full form and upload image</div>) : '' }
+            <HalfLayout>
+                <Title variant='title' title="Add Ecotrail" />
+                <Form onSubmit={handleSubmit}>
+                    <Input type="text" id="ecotrailTitle" label="Title" value={title} error={titleError ? 'Please enter valid title' : ''} onChange={handleChange} />
+                    <Input type="text" id="ecotrailDescription" label="Description" value={description} error={descriptionError ? 'Please enter valid description' : ''} onChange={handleChange} />
+                    <Input type="number" id="ecotrailDuration" label="Duration in minutes" value={duration} error={durationError ? 'Please enter valid duration' : ''} onChange={handleChange} />
+                    <DatePick date={date} setDate={setDate} setDateError={setDateError} />
+                    {imageUrl ? (<img alt="Uploaded thumbnail" className={styles['img-thumbnail']} src={imageUrl} />) : '' }
+                    { dateError ? (<div className={styles.error}>Please enter valid date</div>) : ''}
+                    <Button onClick={openWidget} type='button' title={imageUrl ? 'Upload Another Image' : 'Upload Image'} />
+                    { imageError ? (<div className={styles.error}>Please Upload image</div>) : ''}
 
-            <Form onSubmit={handleSubmit}>
-                <Input type="text" id="ecotrailTitle" label="Title" value={title} error={error.ecotrailTitle ? 'Please enter valid title' : ''} onChange={handleChange} />
-                <Input type="text" id="ecotrailDescription" label="Description" value={description} error={error.ecotrailDescription ? 'Please enter valid description' : ''} onChange={handleChange} />
-                <Input type="number" id="ecotrailDuration" label="Duration in minutes" value={duration} error={error.ecotrailDuration ? 'Please enter valid duration' : ''} onChange={handleChange} />
-                <DatePick date={date} setDate={setDate} />
-                {image ? (<img alt="Uploaded thumbnail" className={styles['img-thumbnail']} src={image} />) : null }
-                { error.date ? (<div className={styles.error}>Please enter valid date</div>) : ''}
-                <Button onClick={openWidget} type='button' title={image ? 'Upload Another Image' : 'Upload Image'} />
-                { error.image ? (<div className={styles.error}>Please Upload image</div>) : ''}
-
-                <SubmitButton type="submit" title="Add Ecotrail"/>
-            </Form>
+                    <SubmitButton type="submit" title="Add Ecotrail"/>
+                </Form>
+            </HalfLayout>
         </PageLayout>
     )
 }
